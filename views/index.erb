@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grocery List</title>
+    <link rel='stylesheet' href='/grocery.css'>
+  </head>
+
+  <body>
+    <h1>Groceries</h1>
+      <ul>
+        <% @groceries.each do |grocery| %>
+
+          <li>
+            <a href='/groceries/<%=grocery['name']%>-<%=grocery['quantity']%>'> <%= grocery['name'] %> <%= grocery['quantity'] %></a>
+          </li>
+        <% end %>
+        <% if @error %>
+        <h3>Error! <%= @error %> </h3>
+        <% end %>
+
+      </ul>
+      <form action='/groceries' method='post'>
+        <label for='Name'>Add New Items:</label>
+        <input type='text' id='Name' name='Name'>
+        <label for="quantity">(optional)How Many?:</label>
+        <input type="text" id= 'quantity' name="quantity" value= '<%= @num %>'>
+        <input type="submit" value="Add">
+      </form>
+
+
+
+  </body>
+</html>
